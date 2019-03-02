@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/favicon.ico">
+    <title>Manager Area</title>
+    <!-- Start of CSS Callout -->
+    <link href="css/Bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/Bootstrap/bootstrap-reboot.css" rel="stylesheet" type="text/css">
+    <link href="css/Bootstrap/bootstrap-grid.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" type="text/css">
+    <!-- End of CSS Callout -->
+    <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+    <script src="js/jquery-3.3.1.slim.js"></script>
+    <script src="js/jScript.js"></script>
+</head>
+
+<body ondragstart="return false;" ondrop="return false;">
+    <div>
+        <!-- Start of Navigation-->
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <div class="container" style="max-width: 1140px;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" style="background: #b30606; border: 1px solid #ffabab;">
+                    <span class="navbar-toggler-icon" style="black"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto" style="cursor: pointer;">
+                        <li class="nav-item" id="upperDashboard">
+                            <a class="nav-link" style="padding-top: 4px; margin-top: 4px;">
+                                Dashboard 
+                                <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="upperInventory">
+                            <a class="nav-link">Inventory</a>
+                        </li>
+                        <li class="nav-item" id="upperDeliveries">
+                            <a class="nav-link">Deliveries</a>
+                        </li>
+                        <li class="nav-item" id="upperDonations">
+                            <a class="nav-link">Donations</a>
+                        </li>
+                        <li class="nav-item" id="upperRequests">
+                            <a class="nav-link">Requests</a>
+                        </li>
+                        <li class="nav-item" id="upperVolunteers">
+                            <a class="nav-link">Volunteers</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link">Wellcome, Manager</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End of Navigation-->
+        <!-- Start of Header-->
+        <header id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 Create-btn-fix">
+                        <h1><i class="fa fa-cog"></i> Dashboard <small style="color: #cccccc; font-variant: small-caps;">manage site logistics</small></h1>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="dropdown create">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" type="button" data-toggle="modal" data-target="#addItem" style="cursor: pointer;">Add Item</a>
+                                <a class="dropdown-item" type="button" data-toggle="modal" data-target="#assignDelivery" style="cursor: pointer;">Assign Delivery</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </header>
+        <!-- End of Header-->
+        <section id="main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" style="max-width: 250px;">
+                        <div class="list-group">
+                            <ul style="padding-left: 0px;">
+                                <li id="sideDashborad">
+                                    <a class="list-group-item list-group-item-action main-color-bg" style="color: white;">
+                                        <div class="ff-hide"><i class="fa fa-cog"></i></div>Dashborad
+                                    </a>
+                                </li>
+                                <li id="sideInventory">
+                                    <a class="list-group-item list-group-item-action">
+                                        <div class="ff-hide"><i class="fa fa-list-alt"></i></div> Inventory
+                                    </a>
+                                </li >
+                                <li id="sideDeliveries">
+                                    <a class="list-group-item list-group-item-action">
+                                        <div class="ff-hide"><i class="fa fa-truck"></i></div> Deliveries
+                                    </a>
+                                </li>
+                                <li id="sideDonations">
+                                    <a class="list-group-item list-group-item-action">
+                                        <div class="ff-hide"><i class="fas fa-heart"></i></div> Donations
+                                    </a>
+                                </li>
+                                <li id="sideRequests">
+                                    <a class="list-group-item list-group-item-action">
+                                        <div class="ff-hide"><i class="fas fa-handshake"></i></div> Requests
+                                    </a>
+                                </li>
+                                <li id="sideVolunteers">
+                                    <a class="list-group-item list-group-item-action">
+                                        <div class="ff-hide"><i class="fa fa-users"></i></div> Volunteers
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <!-- Website Overview -->
+                        <div class="card" id="contentBoxes">
+                            <!-- Dashboard -->
+                            <div id="dashboard">
+                                <div class="card-header main-color-bg">
+                                    Storage Overview
+                                </div>
+                                <div class="card-deck">
+                                    <div class="card">
+                                        <div class="card-body dash-box">
+                                            <h5 class="card-title">
+                                                <h2><i class="far fa-list-alt"></i> 12</h2>
+                                            </h5>
+                                            <p class="card-text">
+                                                <span><h5>Inventory</h5></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body dash-box">
+                                            <h5 class="card-title">
+                                                <h2><i class="fas fa-truck"></i> 33</h2>
+                                            </h5>
+                                            <p class="card-text">
+                                                <span><h5>Deliveries</h5></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body dash-box">
+                                            <h5 class="card-title">
+                                                <h2><i class="fas fa-users"></i> 203</h2>
+                                            </h5>
+                                            <p class="card-text">
+                                                <span><h5>Volunteers</h5></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card" style="border: 1px solid #dadee2; margin-top: 20px;">
+                                    <div class="card-header main-color-bg">
+                                        Deliveries
+                                    </div>
+                                    <div class="card-deck">
+                                        <table class="table table-striped table-hover table-marging-fix">
+                                            <thead>
+                                                <tr style="width: 100%;">
+                                                    <th scope="col">Volunteer</th>
+                                                    <th scope="col">Location</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Update Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td scope="row" data-label="Name">John</td>
+                                                    <td data-label="Location"> Some Street 1, City</td>
+                                                    <td data-label="Status">Completed</td>
+                                                    <td data-label="Date">DD/MM/YYYY, HH:MM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row" data-label="Name">John</td>
+                                                    <td data-label="Location"> Some Street 1, City</td>
+                                                    <td data-label="Status">Completed</td>
+                                                    <td data-label="Date">DD/MM/YYYY, HH:MM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row" data-label="Name">John</td>
+                                                    <td data-label="Location"> Some Street 1, City</td>
+                                                    <td data-label="Status">Completed</td>
+                                                    <td data-label="Date">DD/MM/YYYY, HH:MM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row" data-label="Name">John</td>
+                                                    <td data-label="Location"> Some Street 1, City</td>
+                                                    <td data-label="Status">Completed</td>
+                                                    <td data-label="Date">DD/MM/YYYY, HH:MM</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Inventory -->
+                            <div id="inventory">
+                                <div class="card-header main-color-bg">
+                                    Inventory
+                                </div>
+                                <div class="card-body" style="background: #ffffff;">
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Company</th>
+                                                <th scope="col">Summery</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Supplyable</th>
+                                                <th scope="col">Requested</th>
+                                                <th scope="col">Short</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row" data-label="Id">1</td>
+                                                <td data-label="Name">Product 1</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Summery" data-toggle="modal" data-target="#itemSummery" style="cursor:pointer;"><i class="far fa-file-alt"></i></td>
+                                                <td data-label="Image" data-toggle="modal" data-target="#itemPic" style="cursor:pointer;"><i class="fas fa-search-plus"></i></td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td data-label="Requested">1</td>
+                                                <td data-label="Short">0</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" type="button" data-toggle="modal" data-target="#editItem" style="cursor: pointer;"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">2</td>
+                                                <td data-label="Name">Product 2</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Summery" data-toggle="modal" data-target="#itemSummery" style="cursor:pointer;"><i class="far fa-file-alt"></i></td>
+                                                <td data-label="Image" data-toggle="modal" data-target="#itemPic" style="cursor:pointer;"><i class="fas fa-search-plus"></i></td>
+                                                <td data-label="Supplyable">10</td>
+                                                <td data-label="Requested">11</td>
+                                                <td data-label="Short">1</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" type="button" data-toggle="modal" data-target="#editItem" style="cursor: pointer;"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">3</td>
+                                                <td data-label="Name">Product 3</td>
+                                                <td data-label="Company">Company B</td>
+                                                <td data-label="Summery" data-toggle="modal" data-target="#itemSummery" style="cursor:pointer;"><i class="far fa-file-alt"></i></td>
+                                                <td data-label="Image" data-toggle="modal" data-target="#itemPic" style="cursor:pointer;"><i class="fas fa-search-plus"></i></td>
+                                                <td data-label="Supplyable">23</td>
+                                                <td data-label="Requested">4</td>
+                                                <td data-label="Short">0</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" type="button" data-toggle="modal" data-target="#editItem" style="cursor: pointer;"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">4</td>
+                                                <td data-label="Name">Product 4</td>
+                                                <td data-label="Company">Company C</td>
+                                                <td data-label="Summery" data-toggle="modal" data-target="#itemSummery" style="cursor:pointer;"><i class="far fa-file-alt"></i></td>
+                                                <td data-label="Image" data-toggle="modal" data-target="#itemPic" style="cursor:pointer;"><i class="fas fa-search-plus"></i></td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td data-label="Requested">2</td>
+                                                <td data-label="Short">0</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" type="button" data-toggle="modal" data-target="#editItem" style="cursor: pointer;"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Delieveries -->
+                            <div id="deliveries">
+                                <div class="card-header main-color-bg">
+                                    Deliveries
+                                </div>
+                                <div class="card-body " style="background: #ffffff; margin-bottom: 40px;">
+                                    <table class="table table-striped table-hover table-marging-fix">
+                                        <thead>
+                                            <tr style="width: 100%;">
+                                                <th scope="col">Volunteer</th>
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Update Time</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row" data-label="Name">John</td>
+                                                <td data-label="Location"> Some Street 1, City</td>
+                                                <td data-label="Status">Completed</td>
+                                                <td data-label="Date">DD/MM/YYYY, HH:MM</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" type="button" data-toggle="modal" data-target="#editDelivery" style="cursor: pointer;"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this delivery?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Name">John</td>
+                                                <td data-label="Location"> Some Street 1, City</td>
+                                                <td data-label="Status">Completed</td>
+                                                <td data-label="Date">DD/MM/YYYY, HH:MM</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" type="button" data-toggle="modal" data-target="#editDelivery" style="cursor: pointer;"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this delivery?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Name">John</td>
+                                                <td data-label="Location"> Some Street 1, City</td>
+                                                <td data-label="Status">Completed</td>
+                                                <td data-label="Date">DD/MM/YYYY, HH:MM</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" type="button" data-toggle="modal" data-target="#editDelivery" style="cursor: pointer;"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this delivery?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Name">John</td>
+                                                <td data-label="Location"> Some Street 1, City</td>
+                                                <td data-label="Status">Completed</td>
+                                                <td data-label="Date">DD/MM/YYYY, HH:MM</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" type="button" data-toggle="modal" data-target="#editDelivery" style="cursor: pointer;"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this delivery?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Donations -->
+                            <div id="donations">
+                                <div class="card-header main-color-bg">
+                                    Donations
+                                </div>
+                                <div class="card-body " style="background: #ffffff; margin-bottom: 40px;">
+                                    <table class="table table-striped table-hover table-marging-fix">
+                                        <thead>
+                                            <div class="main-color-bg" colspan="9" style="text-align: left; padding: 10px;">
+                                                <strong>Donor Name 1</strong>
+                                                <a class="btn btn-light" href="#" style="float: right; margin-top: -7px;">
+                                                    <i class="far fa-plus-square"></i>
+                                                </a>
+                                            </div>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Company</th>
+                                                <th scope="col">Supplyable</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row" data-label="Id">1</td>
+                                                <td data-label="Name">Product 1</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">2</td>
+                                                <td data-label="Name">Product 2</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Supplyable">10</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">3</td>
+                                                <td data-label="Name">Product 3</td>
+                                                <td data-label="Company">Company B</td>
+                                                <td data-label="Supplyable">23</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">4</td>
+                                                <td data-label="Name">Product 4</td>
+                                                <td data-label="Company">Company C</td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-striped table-hover table-marging-fix">
+                                        <thead>
+                                            <div class="main-color-bg" colspan="9" style="text-align: left; padding: 10px;">
+                                                <strong>Donor Name 2</strong>
+                                                <a class="btn btn-light" href="#" style="float: right; margin-top: -7px;">
+                                                    <i class="far fa-plus-square"></i>
+                                                </a>
+                                            </div>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Company</th>
+                                                <th scope="col">Supplyable</th>
+                                                <th></th>                                        
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row" data-label="Id">1</td>
+                                                <td data-label="Name">Product 1</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">2</td>
+                                                <td data-label="Name">Product 2</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Supplyable">10</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">3</td>
+                                                <td data-label="Name">Product 3</td>
+                                                <td data-label="Company">Company B</td>
+                                                <td data-label="Supplyable">23</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">4</td>
+                                                <td data-label="Name">Product 4</td>
+                                                <td data-label="Company">Company C</td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Requests -->
+                            <div id="requests">
+                                <div class="card-header main-color-bg">
+                                    Requests
+                                </div>
+                                <div class="card-body " style="background: #ffffff; margin-bottom: 40px;">
+                                    <table class="table table-striped table-hover table-marging-fix">
+                                        <thead>
+                                            <div class="main-color-bg" colspan="9" style="text-align: left; padding: 10px;">
+                                                <strong>Requester Name 2</strong>
+                                                <a class="btn btn-light" href="#" style="float: right; margin-top: -7px;">
+                                                    <i class="far fa-plus-square"></i>
+                                                </a>
+                                            </div>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Company</th>
+                                                <th scope="col">Requested</th>
+                                                <th scope="col">Supplyable</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row" data-label="Id">1</td>
+                                                <td data-label="Name">Product 1</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Requested">1</td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">2</td>
+                                                <td data-label="Name">Product 2</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Requested">8</td>
+                                                <td data-label="Supplyable">10</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">3</td>
+                                                <td data-label="Name">Product 3</td>
+                                                <td data-label="Company">Company B</td>
+                                                <td data-label="Requested">15</td>
+                                                <td data-label="Supplyable">23</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">4</td>
+                                                <td data-label="Name">Product 4</td>
+                                                <td data-label="Company">Company C</td>
+                                                <td data-label="Requested">2</td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-striped table-hover table-marging-fix">
+                                        <thead>
+                                            <div class="main-color-bg" colspan="9" style="text-align: left; padding: 10px;">
+                                                <strong>Requester Name 2</strong>
+                                                <a class="btn btn-light" href="#" style="float: right; margin-top: -7px;">
+                                                    <i class="far fa-plus-square"></i>
+                                                </a>
+                                            </div>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Company</th>
+                                                <th scope="col">Requested</th>
+                                                <th scope="col">Supplyable</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row" data-label="Id">1</td>
+                                                <td data-label="Name">Product 1</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Requested">1</td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">2</td>
+                                                <td data-label="Name">Product 2</td>
+                                                <td data-label="Company">Company A</td>
+                                                <td data-label="Requested">8</td>
+                                                <td data-label="Supplyable">10</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">3</td>
+                                                <td data-label="Name">Product 3</td>
+                                                <td data-label="Company">Company B</td>
+                                                <td data-label="Requested">15</td>
+                                                <td data-label="Supplyable">23</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Id">4</td>
+                                                <td data-label="Name">Product 4</td>
+                                                <td data-label="Company">Company C</td>
+                                                <td data-label="Requested">2</td>
+                                                <td data-label="Supplyable">2</td>
+                                                <td>
+                                                    <a class="btn btn-light btn-btnfix" href="edit.html"><i class="far fa-edit"></i></a>
+                                                    <a class="btn btn-danger btn-btnfix" href="#" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Volunteers -->
+                            <div id="volunteers">
+                                <div class="card-header main-color-bg">
+                                    Volunteers
+                                </div>
+                                <div class="card-body" style="background: #ffffff;">
+                                    <table class="table table-striped table-hover" style="margin-top: 20px;">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Phone</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Joined</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row" data-label="Name">Jill Smith</td>
+                                                <td data-label="Phone">050-11111111</td>
+                                                <td data-label="Email">email@website.com</td>
+                                                <td data-label="Joined">Dec 12, 2017</td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Name">Eve Jackson</td>
+                                                <td data-label="Phone">050-2222222</td>
+                                                <td data-label="Email">email@website.com</td>
+                                                <td data-label="Joined">Dec 13, 2017</td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Name">Stephanie Landon</td>
+                                                <td data-label="Phone">050-3333333</td>
+                                                <td data-label="Email">email@website.com</td>
+                                                <td data-label="Joined">Dec 14, 2017</td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" data-label="Name">Mike Johnson</td>
+                                                <td data-label="Phone">050-4444444</td>
+                                                <td data-label="Email">email@website.com</td>
+                                                <td data-label="Joined">Dec 15, 2017</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer id="footer">
+            <p>Copyright Naor Czerwacki, &copy; 2018</p>
+        </footer>
+        <!-------------------- Modals -------------------->
+            <!-- Add Item -->
+        <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label><strong>Item Name</strong></label>
+                                <input type="text" class="form-control" placeholder="Item Title">
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Item Company</strong></label>
+                                <input type="text" class="form-control" placeholder="Item Company">
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Item Summery</strong></label>
+                                <textarea name="editor1" class="form-control" placeholder="Item Summery"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Item Image</strong></label><br>
+                                <input type="file" name="pic" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="modal-f ooter">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add Item</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+            <!-- Assign Delivery -->
+        <div class="modal fade" id="assignDelivery" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel2">Assign Delivery</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label><strong>Delivery Number</strong></label>
+                                <input type="text" class="form-control" placeholder="Delivery Request Number">
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Assign Volunteer</strong></label><br>
+                                <select>
+                                    <option value="Mike M">Mike M</option>
+                                    <option value="Mike S">Mike S</option>
+                                    <option value="Liza">Liza</option>
+                                    <option value="John">John</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-f ooter">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Assign</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- ****************************************** -->
+            <!-- Edit Item -->
+        <div class="modal fade" id="editItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Item</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label><strong>Item Name</strong></label>
+                                <input type="text" class="form-control" placeholder="Item Title">
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Item Company</strong></label>
+                                <input type="text" class="form-control" placeholder="Item Company">
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Item Summery</strong></label>
+                                <textarea name="editor1" class="form-control" placeholder="Item Summery"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Item Image</strong></label><br>
+                                <input type="file" name="pic" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="modal-f ooter">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Edit Item</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+            <!-- Edit Delivery -->
+        <div class="modal fade" id="editDelivery" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Delivery</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label><strong>Assign Volunteer</strong></label><br>
+                                <select>
+                                    <option value="Mike M">Mike M</option>
+                                    <option value="Mike S">Mike S</option>
+                                    <option value="Liza">Liza</option>
+                                    <option value="John">John</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Location</strong></label>
+                                <input type="text" class="form-control" placeholder="Location">
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Status</strong></label>
+                                <input type="text" class="form-control" placeholder="Status">
+                            </div>
+                        </div>
+                        <div class="modal-f ooter">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Edit Delivery</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- ****************************************** -->
+            <!-- Item Summery -->
+        <div class="modal fade" id="itemSummery" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel4">Item Summery</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in venenatis tortor. Nullam eget neque blandit, pretium tellus ut, iaculis est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed in velit neque. Sed ornare tincidunt rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            </p>
+                        </div>
+                        <div class="modal-f ooter">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+            <!-- Item Picture -->
+        <div class="modal fade" id="itemPic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel5">Item Picture</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/wayne.gif">
+                        </div>
+                        <div class="modal-f ooter">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Start of JavaScript Libraries Callout -->
+        <script>
+            CKEDITOR.replace('editor1');
+        </script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/Bootstrap/bootstrap.js"></script>
+        <!-- End of JavaScript Libraries Callout -->
+    </div>
+</body>
+
+</html>

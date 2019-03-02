@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/favicon.ico">
+    <title>Wellcome</title>
+    <!-- Start of CSS Callout -->
+    <link href="css/Bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/Bootstrap/bootstrap-reboot.css" rel="stylesheet" type="text/css">
+    <link href="css/Bootstrap/bootstrap-grid.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" type="text/css">
+    <!-- End of CSS Callout -->
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background: url(images/father-touching-hand-of-newborn-baby.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            margin-top: 10%;
+        }
+
+        #button {
+            width: 100%;
+            text-align: center;
+            color: white;
+            height: 35px;
+        }
+
+        button {
+            margin-bottom: 10px;
+            width: 100%;
+            padding-top: 5px;
+        }
+
+        h5 {
+            padding-top: 5px;         
+        }
+        
+        .social {
+            width: 100%;
+            text-align: center;
+            height: 53px;
+            margin-bottom: 30px;
+            background: none;
+            text-align: center;
+            color: black;
+            font-size: 48px;
+        }
+        
+        .social a {
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+            margin: 0 5%;
+        }
+    
+        .icon-bg {
+            background-color: white;
+            left: 5px;
+            height: 37px;          
+            width: 36px;
+            position: absolute;
+            right: 0;
+            top: 0.35em;
+            z-index: -1;
+            border-radius: 10px; 
+        }   
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+<body ondragstart="return false;" ondrop="return false;">
+    <div class="wrapper">
+        <section id="main align-items-center">
+            <div class="container">
+                <div class="login-wrap" style="border: none;">
+                    <div class="col-md-4 login-wrap" style="border: 1px solid #1f1f1f8f; width: 20%; background: #1f1f1f8f;">
+                        <button class="btn btn-primary" type="button" onclick="location.href='donors.html'" style="background: #d05b72; border: 1px solid #d05b72;">
+                               <h5>Donate</h5>
+                           </button>
+                        <button class="btn btn-primary" type="button" onclick="location.href='requests.html'" style="background: #5bb4d0; border: 1px solid #5bb4d0; margin-bottom:0px;">
+                               <h5>Request Assistance</h5>
+                           </button>
+                        <div class="social">
+                            <a href="https://www.facebook.com/2help.org.il/" target="_blank" style="color:#29487d;">
+                                <i class="fab fa-facebook-square">
+                                    <span class="icon-bg"></span>
+                                </i>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCJiwGjGwOJZsT5E4abEulVA" target="_blank" style="color:red;">
+                                <i class="fab fa-youtube">
+                                    <span class="icon-bg" style="height: 33px;"></span>
+                                </i>
+                            </a>
+                            <a href="https://www.2help.org.il/" target="_blank" style="color:#007bff;">
+                                <i class="fas fa-globe">
+                                    <span class="icon-bg" style="left: 2px; top: 12px; border-radius: 20px; width: 44px; height: 44px;"></span>
+                                </i>
+                            </a>
+                        </div>
+                        <hr style="border: 1px solid #a5a4a433;">
+                        <div id="button" style="width: 100%; height: 53px;">
+                            <button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#login" aria-expanded="true" aria-controls="login">
+                               <h5>Employee Login</h5>
+                           </button>
+                        </div>
+                        <form id="login" action="manager.html" class="collapse">
+                            <div class="form-group" style="margin-top: 10px;">
+                                <input type="text" class="form-control" placeholder="Enter Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" style="margin-bottom: 0px">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer id="footer">
+            <p>Copyright Naor Czerwacki, &copy; 2018</p>
+        </footer>
+        <!-- Start of JavaScript Libraries Callout -->
+        <script src="js/jquery-3.3.1.slim.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/Bootstrap/bootstrap.js"></script>
+        <!-- End of JavaScript Libraries Callout -->
+    </div>
+</body>
+
+</html>
